@@ -7,6 +7,7 @@ scrape_configs:
     static_configs:
       - targets:
         - http://host.docker.internal:6001/health #Catalog API
+        - http://host.docker.internal:6002/health #Basket API
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
