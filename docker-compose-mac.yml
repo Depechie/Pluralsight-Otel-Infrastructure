@@ -65,7 +65,7 @@ services:
 
   grafana:
     # https://github.com/grafana/grafana/releases
-    image: grafana/grafana:9.1.7
+    image: grafana/grafana:9.2.0
     container_name: grafana
     #command:
     environment:
