@@ -1,5 +1,5 @@
 https://github.com/prometheus/prometheus/issues/5976
 
-docker run -it --rm -v /var/lib/docker/Volumes/pluralsightotel/prometheus:/prometheus ubuntu:22.04
+docker run -it --rm -v /var/lib/docker/volumes/pluralsightotel/prometheus:/prometheus ubuntu:22.04
 
 chown -R 65534:65534 prometheus
