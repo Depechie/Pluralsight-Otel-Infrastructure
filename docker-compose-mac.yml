@@ -74,12 +74,11 @@ services:
       - GF_AUTH_DISABLE_LOGIN_FORM=true
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ${PWD}/grafana/grafana.ini:/etc/grafana/grafana.ini
       - grafana-data:/var/lib/grafana
       - ${PWD}/grafana/provisioning:/etc/grafana/provisioning
     restart: unless-stopped
     ports:
-      - 3001:3000
+      - 3000:3000
     depends_on:
       - prometheus
       - tempo
