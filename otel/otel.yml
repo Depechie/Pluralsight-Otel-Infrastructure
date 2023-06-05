@@ -21,6 +21,10 @@ extensions:
   zpages:
      endpoint: otel:55679
 
+processors:
+  # Data sources: traces, metrics, logs
+  batch:
+
 service:
   extensions: [zpages, health_check]  # Enable zpages
   pipelines:
@@ -29,7 +33,9 @@ service:
       exporters: [prometheus]
     traces:
       receivers: [otlp]
+      processors: [batch]
       exporters: [otlp]
     logs:
       receivers: [otlp]
+      processors: [batch]
       exporters: [loki]
