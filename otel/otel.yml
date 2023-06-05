@@ -17,11 +17,12 @@ exporters:
       insecure: true
 
 extensions:
+  health_check:
   zpages:
      endpoint: otel:55679
 
 service:
-  extensions: [zpages]  # Enable zpages
+  extensions: [zpages, health_check]  # Enable zpages
   pipelines:
     metrics:
       receivers: [otlp]
