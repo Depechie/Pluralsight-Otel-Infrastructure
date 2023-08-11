@@ -24,7 +24,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-      - ./prometheus:/prometheus
+      - prometheus:/prometheus
     depends_on:
       - blackbox
     networks:
@@ -38,7 +38,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./tempo/tempo.yml:/etc/tempo.yaml
-      - ./tempo:/tmp/tempo
+      - tempo:/tmp/tempo
     restart: unless-stopped
     ports:
       - 3200:3200  # tempo
@@ -56,7 +56,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro      
       - ./loki/loki.yml:/etc/loki/local-config.yaml
-      - ./loki:/data/loki
+      - loki:/data/loki
     restart: unless-stopped
     ports:
       - 3100:3100
@@ -73,8 +73,7 @@ services:
       - GF_AUTH_DISABLE_LOGIN_FORM=true
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      # Not sure what this should be because there is no such folder in the repo
-      #- grafana-data:/var/lib/grafana
+      - grafana-data:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning
     restart: unless-stopped
     user: root
@@ -118,3 +117,9 @@ services:
 
 networks:
   otel:
+
+volumes:
+  loki:
+  prometheus:
+  tempo:
+  grafana-data:
